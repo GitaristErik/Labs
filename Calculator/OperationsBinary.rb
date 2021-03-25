@@ -1,4 +1,4 @@
-require_relative 'Colorize'
+require_relative "Colorize"
 
 $a = nil
 $b = nil
@@ -6,7 +6,7 @@ $b = nil
 class OperationsBinary
   class Command
     def execute
-      raise 'Operation not implemented!'
+      raise "Operation not implemented!"
     end
   end
 
@@ -30,7 +30,7 @@ class OperationsBinary
 
   class CommandDivide < Command
     def execute
-      return puts 'Error! Division by zero is not possible!'.red if $b == 0
+      return puts "Error! Division by zero is not possible!".red if $b == 0
 
       $a / $b
     end
@@ -49,10 +49,10 @@ class OperationsBinary
   end
 
   class CommandPrime < Command
-    require 'prime'
+    require "prime"
     def execute
       OperationsBinary.stack += (Prime.take_while { |x| x <= $b }).delete_if { |x| x < $a }
-      OperationsBinary.stack.empty? ? (puts 'No primes found!'.red) : OperationsBinary.stack.last
+      OperationsBinary.stack.empty? ? (puts "No primes found!".red) : OperationsBinary.stack.last
     end
   end
 
